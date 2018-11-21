@@ -1,0 +1,70 @@
+﻿@model IEnumerable<dmquyettien.BangSanPham>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>danh sách sản phẩm</h2>
+
+<p>
+    <input type="text" placeholder="search..." />
+    <a href="@Url.Action("Create")" class="btn btn-primary">tạo mới sản phẩm</a>
+</p>
+<table class="table">
+    <tr>
+        <th>
+            Mã sản phẩm
+        </th>
+        <th>
+            Tên sản phẩm
+        </th>
+        <th>
+            Giá bán
+        </th>
+        <th>
+            Giá gốc
+        </th>
+        <th>
+            Giá góp
+        </th>
+        <th>
+            Số lượng tồn
+        </th>
+        <th>
+            Tên loại
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.MaSP)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.TenSP)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.GiaBan)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.GiaGoc)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.GiaGop)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.SoLuongTon)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.LoaiSanPham.TenLoai)
+        </td>
+        <td>
+            <a href="bangsanpham/Edit?id=item.id" class="btn btn-success">Sửa</a>
+            <a href="bangsanpham/Details?id=item.id" class="btn btn-primary">Xem</a>
+            <a href="bangsanpham/Delete?id=item.id" class="btn btn-danger">Xóa</a>
+        </td>
+    </tr>
+}
+
+</table>
